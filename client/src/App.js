@@ -9,7 +9,7 @@ import {
   createTheme,
 } from "arwes";
 
-import AppLayout from "./pages/AppLayout";
+import AppLayout from "./routes/AppLayout";
 
 import { theme, resources, sounds } from "./settings";
 

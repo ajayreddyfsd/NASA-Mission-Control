@@ -16,7 +16,8 @@ const Footer = () => {
         {/* Paragraph is like a <p>, we make font smaller and add some space */}
         <Paragraph style={{ fontSize: 14, margin: "10px 0" }}>
           This is not an official site and is not affiliated with NASA or SpaceX
-          in any way. For self study project purposes only.
+          in any way. It is just a self study project to practice backend
+          development.
         </Paragraph>
       </Centered>
     </ArwesFooter>

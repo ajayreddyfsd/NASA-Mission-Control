@@ -1,0 +1,12 @@
+=> each of the client-folder, server-folder, and project-folder hosting both those. 
+all three of them have their own package.json
+
+
+=> client-folder is just the react-project-folder put inside the client-folder
+to run just the front-end, cd into client, and install dependencies using 'npm install' and run the project using 'npm start'
+
+
+=> server-folder is just the mvc-express-project like we did before
+to run just the back-end, cd into server, and install dependencies using 'npm install' and run the project using 'npm start'
+
+
