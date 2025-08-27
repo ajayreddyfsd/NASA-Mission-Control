@@ -7,7 +7,7 @@ const { parse } = require("csv-parse");
 
 //! this is our Planet model (from planets.mongo.js → schema we wrote earlier)
 //! we need this to interact with the "planets" collection in MongoDB database
-const planets = require("./planets.mongo");
+const planetsCollection = require("./planets.mongo");
 
 //! this is a simple helper function that checks if a planet is habitable or not and returns true or false
 //! "habitable" = confirmed, gets right amount of starlight, and not too big
@@ -79,7 +79,7 @@ function loadPlanetsData() {
 //! this is a simple function that runs mongoDB's find() query with empty curly braces, to get all the docs inside the planets-collection
 //! also, the second arg is for projection, that means we dont want _id and _v KV-pairs in the docs that u r gonna give us.
 async function getAllPlanets() {
-  return await planets.find(
+  return await planetsCollection.find(
     {},
     {
       _id: 0,
@@ -108,7 +108,7 @@ async function getAllPlanets() {
 async function savePlanet(planet) {
   try {
     // updateOne = if planet exists → update it, if not → insert it (because of upsert: true)
-    await planets.updateOne(
+    await planetsCollection.updateOne(
       {
         keplerName: planet.kepler_name, // find by planet name
       },
