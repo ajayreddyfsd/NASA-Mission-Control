@@ -1,2 +1,8 @@
 to work with back end, first cd into server
 npm install express and nodemon
+
+to run the whole backend code, u need to go to server.js
+and just run that specific file
+
+also, in the services/mongo.js file, u need to set the MongoDB connection string as below
+const MONGO_URL = "mongodb://localhost:27017/";
