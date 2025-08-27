@@ -19,6 +19,10 @@
 // <Route exact path="/upcoming" component={Upcoming} />
 // <Route exact path="/history" component={History} />
 
+//@ why custom hooks?
+//$ using custom-hooks instead of contexts but achieveing the same thing
+//$ which is to pass data across components
+
 import { useState } from "react";
 import { Switch, Route } from "react-router-dom"; // to switch between pages
 import { Frame, withSounds, withStyles } from "arwes"; // fancy UI + sound
@@ -73,6 +77,9 @@ const AppLayout = (props) => {
   const onAbortSound = () => sounds.abort && sounds.abort.play();
   const onFailureSound = () => sounds.warning && sounds.warning.play();
 
+  //@ why custom hooks?
+  //$ using custom-hooks instead of contexts but achieveing the same thing
+  //$ which is to pass data across components
   // get the 2 state variables and 2 functions that we coded inside useLaunches hook
   const { launches, isPendingLaunch, submitLaunch, abortLaunch } = useLaunches(
     onSuccessSound,
