@@ -1,0 +1,2 @@
+to work with back end, first cd into server
+npm install express and nodemon
