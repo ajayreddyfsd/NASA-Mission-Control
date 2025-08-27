@@ -173,8 +173,13 @@ async function saveLaunch(launch) {
 //! if it does not exist, it throws an error
 //! if it exists, we will prepare a launchDoc and add it to the LaunchesCollection
 //! also, there is no such target-KV-pair in the launch doc. how?
-//! the traditional launchDoc we got the website has no target-KV-pair.
-//! but when we call this function, we will add the target-KV-pair to the launchDoc and call this function on it
+//! this launch-obj is not like above, it is sent by user through form-submission, which looks like
+// {
+//   "mission": "Mars Exploration",
+//   "rocket": "Falcon Heavy",
+//   "launchDate": "2025-09-15",
+//   "target": "Kepler-442 b"
+// }
 async function scheduleNewLaunch(launch) {
   // First check if the target planet exists in our database
   const planet = await planetsCollection.findOne({
