@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# NASA Mission Control (Self-Study Project)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React app for scheduling and viewing space missions using Arwes UI library.  
+**Not an official NASA or SpaceX site.** For self-study purposes only.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- Schedule new missions to exoplanets.
+- View upcoming and past launches.
+- Abort upcoming missions.
+- Sounds for success, abort, and errors.
+- Fancy UI with Arwes animations and theme.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Routes
 
-### `yarn test`
+### `/` or `/launch` → Launch
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Form to schedule a new mission.
+- Select launch date, mission name, rocket type, and destination planet.
+- Submit button triggers launch submission with sound and loading state.
 
-### `yarn build`
+### `/upcoming` → Upcoming
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Table showing all upcoming launches.
+- Red ✖ allows aborting a launch (plays abort sound).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `/history` → History
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Table showing all past launches.
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Components
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Layout
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **App.js** – Root component; sets up theme, sounds, background, and routing.
+- **AppLayout.js** – helper component for app.js, has everything that we expect inside app.js like default-components and routes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Components
 
-## Learn More
+- **Header.js** – Navigation bar with links to routes, logo, and sounds.
+- **Footer.js** – Simple footer with disclaimer text.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Remaining-Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Centered.js** – Centers content horizontally with max width.
+- **Clickable.js** – Wraps elements to make them clickable with sound feedback.
 
-### Code Splitting
+### Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Launch.js** – Mission scheduling form.
+- **Upcoming.js** – Table of upcoming launches with abort option.
+- **History.js** – Table of past launches.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Custom Hooks
 
-### Making a Progressive Web App
+- **usePlanets.js** – Fetches planets from API.
+- **useLaunches.js** – Manages launches: fetch, submit, abort, loading state, and plays sounds.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## API Requests (`requests.js`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `httpGetPlanets()` – Get all planets.
+- `httpGetLaunches()` – Get all launches (sorted by flight number).
+- `httpSubmitLaunch(launch)` – Add a new launch.
+- `httpAbortLaunch(id)` – Abort a launch by ID.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## How It Works (Summary)
 
-### `yarn build` fails to minify
+1. **App.js** sets up theme, sounds, background, and routing.
+2. **AppLayout** renders header, footer, routes, and page content inside an animated Frame.
+3. Routes use **custom hooks** to fetch and manage data.
+4. **Clickable** + **SoundsProvider** give feedback for actions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Execution Flow
+
+1️⃣ User clicks a navigation link in Header
+
+<Link to="/upcoming">Upcoming</Link>
+
+2️⃣ URL changes in the browser to "/upcoming"
+
+3️⃣ which then triggers App.js, which then triggers AppLayout.js. React Router sees the new URL and looks at the Routes in AppLayout
+<Switch>
+<Route exact path="/" component={Launch} />
+<Route exact path="/launch" component={Launch} />
+<Route exact path="/upcoming" render={() => <Upcoming ... />} />
+<Route exact path="/history" render={() => <History ... />} />
+</Switch>
+
+---
