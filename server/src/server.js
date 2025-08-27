@@ -6,7 +6,7 @@ const { mongoConnect } = require("./services/mongo"); // Function to connect to 
 const { loadPlanetsData } = require("./models/planets.model"); // Function to load planets into DB
 const { loadLaunchData } = require("./models/launches.model"); // Function to load launches into DB
 
-const PORT = process.env.PORT || 3000; // Use port from .env or default 8000
+const PORT = process.env.PORT || 8000; // Use port from .env or default 8000
 
 const server = http.createServer(app); // Create HTTP server using Express app
 

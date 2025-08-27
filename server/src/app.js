@@ -19,7 +19,7 @@ app.use(
 app.use(morgan("combined")); // Log HTTP requests in 'combined' format
 
 app.use(express.json()); // Parse incoming JSON request bodies automatically
-app.use(express.static(path.join(__dirname, "..", "public"))); // Serve static files from the public folder (HTML, JS, CSS, images)
+app.use(express.static(path.join(__dirname, "../../client/public"))); // Serve static files from the public folder (HTML, JS, CSS, images)
 
 //! ---------------------------
 //! API routes
@@ -31,7 +31,7 @@ app.use("/v1", api); // Prefix all API routes with /v1, e.g., /v1/planets, /v1/l
 //! ---------------------------
 app.get("/*", (req, res) => {
   // If route not found in API, send the frontend's index.html (React app)
-  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+  res.sendFile(path.join(__dirname, "../../client/public/index.html"));
 });
 
 module.exports = app; // Export app to be used in server.js
