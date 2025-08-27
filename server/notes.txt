@@ -51,3 +51,4 @@ app.js
 ---------
 server.js
 ---------
+RUN the app from here
