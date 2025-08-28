@@ -4,7 +4,11 @@
 //$ the below code is in the hooks folder, but is not a custom hook
 
 // base URL for our API
-const API_URL = "v1";
+//! how did we get this url
+//! coz, backend is running on port 8000
+//! also, in backend's app.js, all api urls are mounted on /v1
+//! so we need use that specifc port and v1
+const API_URL = "http://localhost:8000/v1";
 
 //! so basically we dont have the whole planets data, backend API has it, which we will be coding soon
 //! so for now, we are just hitting that api and getting all that data

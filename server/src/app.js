@@ -41,7 +41,10 @@ app.use(express.static(path.join(__dirname, "../../client/public")));
 
 //! API routes
 //! instead of writing routes here, we wrote in api.js and used it here
-app.use("/v1", api); // Mount API routes under /v1
+//! Mount all API routes under /v1
+//! which means, we need to use "http://localhost:8000/v1" as the api-url in the frontend
+//! especially in front-end's requests.js file in utils
+app.use("/v1", api);
 
 //! so for all other routes, just send this file
 app.get("/*", (req, res) => {
