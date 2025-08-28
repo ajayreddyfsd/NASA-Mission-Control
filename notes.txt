@@ -9,4 +9,65 @@ to run just the front-end, cd into client, and install dependencies using 'npm i
 => server-folder is just the mvc-express-project like we did before
 to run just the back-end, cd into server, and install dependencies using 'npm install' and run the project using 'npm start'
 
+-------------------
+backend development
+-------------------
 
+to work with back end, first cd into server
+npm install express and nodemon and cors
+
+
+to run the whole backend code, u need to go to server.js
+and just run that specific file
+
+
+also, before starting to run, in the services/mongo.js file, u need to set the MongoDB connection string as below
+const MONGO_URL = "mongodb://localhost:27017/";
+
+
+-------------
+models folder ( M )
+-------------
+all we did was to write schemas for the planetsCollection and launchesCollection
+then, in the planets.model.js, we read the csv file as stream, filtered the planets, and stored those planet-docs inside the planetsCollection
+then, in the launches.model.js, we got the data from api, we axiosed it, and then saved each launch-doc into the launchesCollection
+in the in the launches.model.js,
+we also did scheduleNewLaunch() and abortLaunchById(). one adds a new launch-doc into the collection,
+and the other just adds new KV pairs to that launch-doc, instead of deleting that specific launch-doc
+=> so in models folder, all we did was to deal with the data and the database
+
+
+
+---------------
+services folder
+---------------
+1. has mongodb connection, disconnection, connection-acknowledgement, error-acknowledgement functions
+2. has some code to facilitate pagination
+
+
+
+-------------
+routes folder ( C )
+-------------
+to handle API end points, get and post requests, 
+
+routes is the controllers folder
+it is always two parts, controller-file and router-file
+there are controller-functions in the controller-file 
+and in the router file, we map specific routes with specific controller fucntions.
+
+Controllers and routers go hand in hand because the controller functions return JSON, text, files, 
+or HTML pages (sometimes they also render views). We then couple each controller function with a specific route, 
+and organize all those routes inside a router file. 
+Finally, in app.js, we mount those routers on specific paths/routes again. so the server knows which router to use.
+
+------
+app.js
+------
+
+
+
+---------
+server.js
+---------
+RUN the app from here
