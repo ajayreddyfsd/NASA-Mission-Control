@@ -71,3 +71,30 @@ app.js
 server.js
 ---------
 RUN the app from here
+
+
+
+running fe and be together.
+step1: 
+check on what port BE is running on and on what " ", the api urls are mounted on
+in our case, BE port is 8000 and mounted on '/v1'
+got to know from BE's app.js
+
+so now the api url is "http://localhost:8000/v1"
+
+step2:
+use this url as the api-url in front end code
+especially in the utils/requests.js
+
+step3:
+first run BE by running server.js
+and then run FE by "cd client" and "npm start"
+
+
+
+running both with single command
+in the combined pkg.json of both fe and be, put this under scripts
+    "watch": "concurrently \"npm run server\" \"npm run client\"",
+then install npm install --save-dev concurrently
+and run using "npm run watch"
+thats it
