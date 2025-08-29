@@ -38,7 +38,7 @@ async function httpAddNewLaunch(req, res) {
     !launch.target
   ) {
     return res.status(400).json({
-      error: "Missing required launch property",
+      error: "Missing required launch property - must be 4: mission, rocket, lauchDate, target",
     });
   }
 

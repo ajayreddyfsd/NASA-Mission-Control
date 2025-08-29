@@ -7,7 +7,7 @@ const planetsCollection = require("./planets.mongo"); // Our database-collection
 const DEFAULT_FLIGHT_NUMBER = 100;
 
 // This is the website address where we can get SpaceX launch data
-const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches";
+const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches/query";
 
 //! This function gets the complete launch data from SpaceX's website
 //! This function gets the complete launch data from SpaceX's website
@@ -18,6 +18,8 @@ async function populateLaunches() {
   console.log("Downloading launch data...");
 
   // Ask SpaceX's website for all their launch data
+  //! we are getting the data, but why r we using post
+  //! coz this how spaceX wants, we post query-for-data to get-the-data
   const response = await axios.post(SPACEX_API_URL, {
     query: {}, // We're not filtering anything - we want all data
     options: {
