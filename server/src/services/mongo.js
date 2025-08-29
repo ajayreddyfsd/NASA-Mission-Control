@@ -2,7 +2,8 @@ const mongoose = require("mongoose"); // Import mongoose so we can connect to Mo
 require("dotenv").config(); // Load environment variables from .env file
 
 //$ the small mongo URL to store data in mongodb db, locally in the laptop
-//$ the length mongo url is to store data in mongo db, but in cloud - the mongoDB Atlas
+//$ the length mongo url is to store data in mongo db, but in cloud - the mongoDB Atlas, 
+//$ but needs username and password to access the cluster
 //$ just toggle between which one you want to use
 
 //! MongoDB connection string
@@ -12,7 +13,7 @@ require("dotenv").config(); // Load environment variables from .env file
 // For now, it's using a local MongoDB server:
 const MONGO_URL = "mongodb://localhost:27017/";
 // const MONGO_URL =
-//   "mongodb+srv://ajayreddytech4jezCWHU6eXHqKM5:4jezCWHU6eXHqKM5@nasamissioncontrol.7omztw3.mongodb.net/?retryWrites=true&w=majority&appName=NasaMissionControl";
+//   "mongodb+srv://<username>:<password>@nasamissioncontrol.7omztw3.mongodb.net/?retryWrites=true&w=majority&appName=NasaMissionControl";
 
 //! basic functions to establish the mongoDB connection
 //! basic functions to establish the mongoDB connection

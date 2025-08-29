@@ -38,6 +38,7 @@ const planetSchema = new mongoose.Schema({
 // "Please take the blueprint (planetSchema) and connect it to the collection (folder/table) by the name "planets" in the database.
 // Planet = the model name we can use in code
 // 'planets' = the actual collection in MongoDB
+//$ we need to write "Planet" here, mDB converts it internally to "planets" which is the collection
 module.exports = mongoose.model("Planet", planetSchema);
 
 //! why connect it to collection?

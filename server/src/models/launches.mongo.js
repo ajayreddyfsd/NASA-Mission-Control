@@ -83,6 +83,7 @@ const launchesSchema = new mongoose.Schema({
 //! how do i know the collection name is "launches" ?
 //! coz, we used "Launch" for the model in below code
 //! which internally makes the collection name "launches"
+//$ we need to write "Launch" here, mDB converts it internally to "launches" which is the collection
 
 // here we tell mongoose:
 // "Please take the blueprint (launchesSchema) and connect it to the collection (folder/table) by the name 'launches' in the database.
