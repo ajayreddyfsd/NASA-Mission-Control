@@ -153,6 +153,8 @@ async function getAllLaunches(skip, limit) {
 }
 
 //! This function saves a launch-doc to our launchesCollection in the database
+//$ if already exists, updates it to the same thing
+//$ if does not exist, it adds
 async function saveLaunch(launch) {
   try {
     await launchesCollection.updateOne(
