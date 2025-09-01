@@ -1,4 +1,7 @@
-require("dotenv").config(); // Load environment variables from .env
+//! we need this to Load environment variables from .env
+//! we need this to Load environment variables from .env
+//! we need this to Load environment variables from .env
+require("dotenv").config();
 
 const { mongoConnect } = require("./services/mongo"); // Function to connect to MongoDB
 const { loadPlanetsData } = require("./models/planets.model"); // Function to load planets into DB

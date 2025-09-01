@@ -11,6 +11,7 @@ const DEFAULT_FLIGHT_NUMBER = 100;
 //$ this is the original API URL, we can get data from this link as well, but the thing is,
 //$ it gives us all the data. we wanna filter it before receiving,
 //$ thats why we put query at the end, and pass our query using the POST request
+//~ also u see the /v4 in the url, all api urls are mounted like that just like this and just like the backend i coded
 // const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches";
 
 const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches/query";
