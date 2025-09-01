@@ -7,6 +7,12 @@ const planetsCollection = require("./planets.mongo"); // Our database-collection
 const DEFAULT_FLIGHT_NUMBER = 100;
 
 // This is the website address where we can get SpaceX launch data
+
+//$ this is the original API URL, we can get data from this link as well, but the thing is,
+//$ it gives us all the data. we wanna filter it before receiving,
+//$ thats why we put query at the end, and pass our query using the POST request
+// const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches";
+
 const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches/query";
 
 //! This function gets the complete launch data from SpaceX's website
@@ -19,7 +25,7 @@ async function populateLaunches() {
 
   // Ask SpaceX's website for all their launch data
   //! we are getting the data, but why r we using post
-  //! coz this how spaceX wants, we post query-for-data to get-the-data
+  //! coz dont want all the data from spaceX. we want to filter it, thats why we are suing post
   const response = await axios.post(SPACEX_API_URL, {
     query: {}, // We're not filtering anything - we want all data
     options: {
