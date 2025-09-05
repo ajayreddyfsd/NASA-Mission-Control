@@ -11,9 +11,9 @@ require("dotenv").config(); // Load environment variables from .env file
 //! MongoDB connection string
 // Normally you'd use: const MONGO_URL = process.env.MONGO_URL;
 // For now, it's using a local MongoDB server:
-const MONGO_URL = process.env.MONGO_URL;
-// const MONGO_URL =
-//   "mongodb+srv://<username>:<password>@nasamissioncontrol.7omztw3.mongodb.net/?retryWrites=true&w=majority&appName=NasaMissionControl";
+// const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL =
+  "mongodb+srv://ajayreddytech4jezCWHU6eXHqKM5:4jezCWHU6eXHqKM5@nasamissioncontrol.7omztw3.mongodb.net/?retryWrites=true&w=majority&appName=NasaMissionControl";
 
 //! basic functions to establish the mongoDB connection
 //! basic functions to establish the mongoDB connection

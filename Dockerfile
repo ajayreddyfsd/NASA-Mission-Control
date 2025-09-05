@@ -19,7 +19,7 @@ COPY package*.json ./
 COPY client/package*.json client/
 
 # 5. Install those frontend libraries (without developer-only tools)
-RUN npm run install-client --omit=dev
+RUN npm install --prefix client
 
 # 6. Bring in the list of libraries needed for the backend (server)
 COPY server/package*.json server/

@@ -15,7 +15,9 @@ jobs:
   build: # Job is like a big task. This one is called "build"
     env: # Environment variables (special info your code can use)
       CI: true # Tells the code "we are in CI mode"
-      MONGO_URL: mongodb://localhost/nasa # Link to MongoDB database for tests
+      #MONGO_URL: mongodb://localhost/nasa # Link to MongoDB database for tests #@ one for local one for atlas
+      MONGO_URL: mongodb+srv://ajayreddytech4jezCWHU6eXHqKM5:4jezCWHU6eXHqKM5@nasamissioncontrol.7omztw3.mongodb.net/nasa?retryWrites=true&w=majority&appName=NasaMissionControl
+    #@ one for local one for atlas
 
     strategy: # Test on different versions of Node and MongoDB
       matrix:
