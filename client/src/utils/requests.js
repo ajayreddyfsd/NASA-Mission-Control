@@ -8,7 +8,7 @@
 //! coz, backend is running on port 8000
 //! also, in backend's app.js, all api urls are mounted on /v1
 //! so we need use that "specifc-port" as well as the "mount-v1"
-//@ we use one url if we are running the application locally and the other url when we are running the application from cloud
+//@ we use one url if we are running the application locally and the other url when we are running the application from the docker and cloud
 // const API_URL = "http://localhost:8000/v1";
 const API_URL = "v1";
 

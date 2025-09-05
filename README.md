@@ -8,3 +8,5 @@ A full-stack NASA Mission Control project I built as part of the Artemis initiat
 
 backend api url is "http://localhost:8000/v1"
 coz port is 8000 and mounted on /v1
+
+run both backend and front end together using "npm run watch"
