@@ -46,5 +46,7 @@ USER node
 CMD [ "npm", "start", "--prefix", "server" ]
 
 # 13. Open port number 8000 so people can connect to the server
-#! why 8000? coz that is what we have used while coding backend
+#! why 8000? coz that is what we have used while coding backend, we just put that here
+#! does this mean, when run using docker, it will run on this port ???
+#! No!! not at all. it will run on the whatever port we are running the docker-container on!
 EXPOSE 8000
