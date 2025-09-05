@@ -3,9 +3,9 @@ name: NASA Project CI   # Name of this workflow (what it’s called)
 # When should this workflow run?
 on:
   push:
-    branches: [ master ]   # Run this workflow when you push code to master branch
+    branches: [ main, master ]   # Run this workflow when you push code to master-branch or main-branch
   pull_request:
-    branches: [ master ]   # Run this workflow when someone asks to add code to master (PR)
+    branches: [ main, master ]   # Run this workflow when someone asks to add code to master (PR) or main (PR)
 
 jobs:
   build:   # Job is like a big task. This one is called "build"
