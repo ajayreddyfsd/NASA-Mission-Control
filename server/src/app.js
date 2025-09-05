@@ -34,7 +34,7 @@ app.use(morgan("combined"));
 app.use(express.json());
 // Automatically parses incoming request bodies with JSON content type and makes the data available as req.body in your routes.
 
-app.use(express.static(path.join(__dirname, "../../client/public")));
+app.use(express.static(path.join(__dirname, "../public")));
 // Serves static files (like index.html, CSS, JS, images) from the React app's public folder.
 // __dirname points to server/src, so we go up two levels to reach client/public.
 // This allows visiting your site in a browser without hitting the API first.
@@ -48,7 +48,7 @@ app.use("/v1", api);
 
 //! so for all other routes, just send this file
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../client/public/index.html")); // Serve React app
+  res.sendFile(path.join(__dirname, "../public/index.html")); // Serve React app
 });
 
 // Export Express app
