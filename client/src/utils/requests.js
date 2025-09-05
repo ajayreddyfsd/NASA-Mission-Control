@@ -7,8 +7,10 @@
 //! how did we get this url
 //! coz, backend is running on port 8000
 //! also, in backend's app.js, all api urls are mounted on /v1
-//! so we need use that specifc port and v1
-const API_URL = "http://localhost:8000/v1";
+//! so we need use that "specifc-port" as well as the "mount-v1"
+//@ we use one url if we are running the application locally and the other url when we are running the application from cloud
+// const API_URL = "http://localhost:8000/v1";
+const API_URL = "v1";
 
 //! so basically we dont have the whole planets data, backend API has it, which we will be coding soon
 //! so for now, we are just hitting that api and getting all that data
