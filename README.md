@@ -1,6 +1,10 @@
-# MERN Full Stack NASA Mission Control Project
+# MERN Full-Stack NASA Mission Control Project; Dockerized & Deployed on AWS EC2.
 
-A full-stack NASA Mission Control project I built as part of the Artemis initiative. This application lets users explore data from NASA and SpaceX while simulating mission control operations. I deployed it to production using Docker and AWS, following modern best practices for scalable, performant applications with Node.js and MongoDB. The project is inspired by NASA’s Artemis program, which aims to return humans to the Moon and establish a sustainable presence for future space exploration.
+A MERN full-stack project simulating NASA mission control operations with NASA and SpaceX data. Dockerized and deployed on AWS EC2 for a scalable, production-ready setup using Node.js and MongoDB.
+
+**Tools & Technologies:** MongoDB, Express.js, React.js, Hooks, Node.js, MongoDB Atlas, Docker, AWS EC2, JavaScript.
+
+
 
 ![site snaps](image.png)
 
