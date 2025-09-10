@@ -7,6 +7,9 @@
 //$ A custom hook is just a normal function that uses React hooks inside it
 //$ It lets us reuse logic (like fetching, saving, updating data) in different components
 
+//~ A custom hook lets us return state and functions, so other components can easily reuse them.
+//~ If combined with Context, hooks can also provide data in a centralized, global way.
+
 // useCallback is to pass a function to it, so it doesnt keep re-rendering when the component re-renders
 // we need to pass those external things that are being used in the useCallback() fucntion, into the dependency array of useCallback()
 // useEffect is for side things

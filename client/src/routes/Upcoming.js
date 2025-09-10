@@ -1,5 +1,6 @@
 //$ This component is same as History-component but shows the list of upcoming missions
 //$ Users can see all upcoming launches and abort a mission if needed
+//$ this has one main component and one helper component
 
 /*
 Props of Upcoming component:

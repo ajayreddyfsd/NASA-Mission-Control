@@ -7,7 +7,10 @@
 //$ A custom hook is just a normal function that uses React hooks inside it
 //$ It lets us reuse logic (like fetching, saving, updating data) in different components
 
-// useCallback is to pass a function to it, so it doesnt keep re-rendering when the component re-renders
+//~ A custom hook lets us return state and functions, so other components can easily reuse them.
+//~ If combined with Context, hooks can also provide data in a centralized, global way.
+
+// useCallback is to pass a function to it, so it doesnt keep re-rendering the same function again and again, when the component re-renders
 // we need to pass those external things that are being used in the useCallback() fucntion, into the dependency array of useCallback()
 // useEffect is for side things
 // useState is to store local state data
@@ -53,7 +56,9 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       const rocket = data.get("rocket-name");
       const target = data.get("planets-selector");
 
-      //! then we are using the function that we coded in requests.js, to add new launch to already existing launches
+      //$ then we are using the function that we coded in requests.js, to add new launch to already existing launches
+      //$ then we are using the function that we coded in requests.js, to add new launch to already existing launches
+      //$ then we are using the function that we coded in requests.js, to add new launch to already existing launches
       const response = await httpSubmitLaunch({
         launchDate,
         mission,
@@ -82,6 +87,9 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
   // function to abort (delete) a launch
   const abortLaunch = useCallback(
     async (id) => {
+      //$ now we are using the function coded inside requests.js
+      //$ now we are using the function coded inside requests.js
+      //$ now we are using the function coded inside requests.js
       const response = await httpAbortLaunch(id); //! we need to pass the id and then call httpAbortLaunch on that id
 
       //! if success, we are running the getLaunches() again, so we have updated data in out state variables
@@ -100,7 +108,9 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
   );
 
   // return things so components can use them
-  //! returning those two state vars and two functions, so other components can use them
+  //$ returning those two state vars and two functions, so other components can use them
+  //$ returning those two state vars and two functions, so other components can use them
+  //$ returning those two state vars and two functions, so other components can use them
   return {
     launches, // the launches data
     isPendingLaunch, // true/false if launch is being submitted

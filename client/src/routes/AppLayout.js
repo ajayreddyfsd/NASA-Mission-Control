@@ -2,6 +2,9 @@
 //@ has everything that we expect inside App.js
 //$ It has the Header-component, Footer-component, the main part of the page, and the routes defined as well
 //$ Also handles switching between pages (Launch, Upcoming, History), sounds, and animations
+//! but just one difference is, app-comp usually only has routes
+//! here, we have routes besides header and footer
+//! so header and footer are always displayed regardless of route and route will be displayed based on the route/url
 
 //@ Props to this component:
 //$ - sounds: object containing sound effects
@@ -20,20 +23,27 @@
 // <Route exact path="/history" component={History} />
 
 //@ why custom hooks?
-//$ using custom-hooks instead of contexts but achieveing the same thing
-//$ which is to pass data across components
+//$ A custom hook is just a normal function that uses React hooks inside it
+//$ It lets us reuse logic (like fetching, saving, updating data) in different components
+//$ A custom hook lets us return state and functions, so other components can easily reuse them.
+//$ If combined with Context, hooks can also provide data in a centralized, global way.
 
 import { useState } from "react";
 import { Switch, Route } from "react-router-dom"; // to switch between pages
 import { Frame, withSounds, withStyles } from "arwes"; // fancy UI + sound
 
+//@ importing all the custom hooks,
+//@ remember! inside those custom hooks, we returned their state-vars and some functions
+//@ we gonna use those here, what were returned inside those custom hooks, we gonna use them here
 import usePlanets from "../hooks/usePlanets"; // custom hook to get planets list
 import useLaunches from "../hooks/useLaunches"; // custom hook to manage launches
 
+//@ importing all the components
 import Centered from "../components/Centered"; // centers things in middle
 import Header from "../components/Header"; // top bar
 import Footer from "../components/Footer"; // bottom bar
 
+//@ importing all the route-components
 import Launch from "./Launch"; // page to schedule a launch
 import History from "./History"; // page to see history
 import Upcoming from "./Upcoming"; // page to see upcoming launches
@@ -77,9 +87,9 @@ const AppLayout = (props) => {
   const onAbortSound = () => sounds.abort && sounds.abort.play();
   const onFailureSound = () => sounds.warning && sounds.warning.play();
 
-  //@ why custom hooks?
-  //$ using custom-hooks instead of contexts but achieveing the same thing
-  //$ which is to pass data across components
+  //@ using those custom hooks
+  //@ using those custom hooks
+  //@ using those custom hooks
   // get the 2 state variables and 2 functions that we coded inside useLaunches hook
   const { launches, isPendingLaunch, submitLaunch, abortLaunch } = useLaunches(
     onSuccessSound,
@@ -110,6 +120,7 @@ const AppLayout = (props) => {
               <Switch>
                 <Route exact path="/">
                   {/* show Launch page */}
+                  {/* passing the data, from the custom hook to the component */}
                   <Launch
                     entered={anim.entered} // animation info
                     planets={planets} // list of planets
@@ -120,6 +131,7 @@ const AppLayout = (props) => {
 
                 <Route exact path="/launch">
                   {/* show Launch page */}
+                  {/* passing the data, from the custom hook to the component */}
                   <Launch
                     entered={anim.entered}
                     planets={planets}
@@ -130,6 +142,7 @@ const AppLayout = (props) => {
 
                 <Route exact path="/upcoming">
                   {/* show Upcoming page */}
+                  {/* passing the data, from the custom hook to the component */}
                   <Upcoming
                     entered={anim.entered}
                     launches={launches} // list of upcoming launches
@@ -139,6 +152,7 @@ const AppLayout = (props) => {
 
                 <Route exact path="/history">
                   {/* show History page */}
+                  {/* passing the data, from the custom hook to the component */}
                   <History
                     entered={anim.entered}
                     launches={launches} // list of all launches

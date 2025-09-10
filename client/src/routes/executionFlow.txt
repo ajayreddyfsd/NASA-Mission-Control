@@ -24,7 +24,7 @@
 <Footer />          // always visible at bottom
 
 
-// 6️⃣ Props are passed from AppLayout to the page component
+// 6️⃣ Props are passed from custom-hooks to the page-component (all inside the Applayout-component)
 //    - launches, planets, submitLaunch, abortLaunch, etc.
 //
 // 7️⃣ Frame animation runs if animateFrame() is called from Header

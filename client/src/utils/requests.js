@@ -1,7 +1,7 @@
-//$ the below code is in the hooks folder, but is not a custom hook
-//$ the below code is in the hooks folder, but is not a custom hook
-//$ the below code is in the hooks folder, but is not a custom hook
-//$ the below code is in the hooks folder, but is not a custom hook
+//$ here we connect the front-end with the back-end using the backend-api-URL
+//$ here we connect the front-end with the back-end using the backend-api-URL
+//$ here we connect the front-end with the back-end using the backend-api-URL
+//$ here we connect the front-end with the back-end using the backend-api-URL
 
 // base URL for our API
 //! how did we get this url
@@ -39,7 +39,7 @@ async function httpGetLaunches() {
 async function httpSubmitLaunch(launch) {
   try {
     return await fetch(`${API_URL}/launches`, {
-      method: "post", // we are sending data
+      method: "post", //~ post request, means we are sending the data
       headers: {
         "Content-Type": "application/json", // we are sending JSON
       },
