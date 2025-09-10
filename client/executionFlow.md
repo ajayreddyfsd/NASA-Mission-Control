@@ -1,12 +1,11 @@
 # 🚀 React Project Flow Notes
 
----
-
 ## 🔄 Route Flow (from navigation to rendered component)
 
 ```jsx
 // 1️⃣ User clicks a navigation link in Header
 <Link to="/upcoming">Upcoming</Link>
+```
 
 // 2️⃣ URL changes in the browser to "/upcoming"
 
@@ -42,11 +41,6 @@
 // ✅ Key idea: Route only controls the middle content.
 //    Header and Footer are part of the layout and never get replaced.
 
-
-```
-
-Do you want me to also **remove the inline `// comments`** inside the `jsx` code blocks too (like `// always visible at top`) or keep them as they are?
-```
 
 
 ## 🌐 Flow of functions and data (requests.js → custom hooks → components)
