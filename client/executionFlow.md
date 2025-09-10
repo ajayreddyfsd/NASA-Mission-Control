@@ -7,39 +7,42 @@
 <Link to="/upcoming">Upcoming</Link>
 ```
 
-// 2️⃣ URL changes in the browser to "/upcoming"
+2️⃣ URL changes in the browser to "/upcoming"
 
-// 3️⃣ which then triggers App.js, which then triggers AppLayout.js. React Router sees the new URL and looks at the Routes in AppLayout
+3️⃣ which then triggers App.js, which then triggers AppLayout.js. React Router sees the new URL and looks at the Routes in AppLayout
+
+```jsx
 <Switch>
   <Route exact path="/" component={Launch} />
   <Route exact path="/launch" component={Launch} />
   <Route exact path="/upcoming" render={() => <Upcoming ... />} />
   <Route exact path="/history" render={() => <History ... />} />
 </Switch>
+```
 
-// 4️⃣ Only the matching Route (here /upcoming) renders the page component
-//    => Upcoming component is rendered inside the <Switch> in AppLayout
+4️⃣ Only the matching Route (here /upcoming) renders the page component
+=> Upcoming component is rendered inside the <Switch> in AppLayout
 
-// 5️⃣ Header and Footer are outside the <Switch> and always rendered
+5️⃣ Header and Footer are outside the <Switch> and always rendered
+
+```jsx
 <Header />          // always visible at top
 <Switch> ... </Switch>  // middle content changes
 <Footer />          // always visible at bottom
+```
 
-// 6️⃣ Props are passed from custom-hooks to the page-component (all inside the Applayout-component)
-//    - launches, planets, submitLaunch, abortLaunch, etc.
+6️⃣ Props are passed from custom-hooks to the page-component (all inside the Applayout-component) - launches, planets, submitLaunch, abortLaunch, etc.
 
-// 7️⃣ Frame animation runs if animateFrame() is called from Header
-//    - hides Frame
-//    - waits 600ms
-//    - shows Frame again
+8️⃣ Result on the screen:
 
-// 8️⃣ Result on the screen:
-//    [Header]       <- always visible
-//    [Upcoming]     <- content changes based on route
-//    [Footer]       <- always visible
+````jsx
+    [Header]       <- always visible
+    [Upcoming]     <- content changes based on route
+    [Footer]       <- always visible
+```
 
-// ✅ Key idea: Route only controls the middle content.
-//    Header and Footer are part of the layout and never get replaced.
+ ✅ Key idea: Route only controls the middle content.
+    Header and Footer are part of the layout and never get replaced.
 
 
 
@@ -79,7 +82,8 @@
 
 ### 📊 Diagram (flow of functions & data)
 
-```
+````
+
 requests.js
 ├── httpGetLaunches()
 ├── httpSubmitLaunch()
@@ -88,20 +92,23 @@ requests.js
 
 custom hooks
 ├── useLaunches()
-│     ├─ calls httpGetLaunches()
-│     ├─ defines submitLaunch() → uses httpSubmitLaunch()
-│     └─ defines abortLaunch()  → uses httpAbortLaunch()
+│ ├─ calls httpGetLaunches()
+│ ├─ defines submitLaunch() → uses httpSubmitLaunch()
+│ └─ defines abortLaunch() → uses httpAbortLaunch()
 │
 └── usePlanets()
-      └─ calls httpGetPlanets()
+└─ calls httpGetPlanets()
 
 AppLayout
 ├─ calls useLaunches() → gets { launches, submitLaunch, abortLaunch }
-├─ calls usePlanets()  → gets { planets }
+├─ calls usePlanets() → gets { planets }
 │
 ├─ passes submitLaunch → Launch component → <form onSubmit>
-├─ passes abortLaunch  → Upcoming component → ❌ button
-└─ passes planets      → Launch component → <select options>
+├─ passes abortLaunch → Upcoming component → ❌ button
+└─ passes planets → Launch component → <select options>
+
+```
+
 ```
 
 ```
