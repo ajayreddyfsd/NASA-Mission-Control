@@ -35,16 +35,12 @@
 
 8️⃣ Result on the screen:
 
-````jsx
     [Header]       <- always visible
     [Upcoming]     <- content changes based on route
     [Footer]       <- always visible
-```
 
- ✅ Key idea: Route only controls the middle content.
-    Header and Footer are part of the layout and never get replaced.
-
-
+✅ Key idea: Route only controls the middle content.
+Header and Footer are part of the layout and never get replaced.
 
 ## 🌐 Flow of functions and data (requests.js → custom hooks → components)
 
@@ -114,3 +110,4 @@ AppLayout
 ```
 
 ```
+````
