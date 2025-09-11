@@ -26,7 +26,11 @@ async function populateLaunches() {
 
   // Ask SpaceX's website for all their launch data
   //! we are getting the data, but why r we using post
-  //! coz dont want all the data from spaceX. we want to filter it, thats why we are suing post
+  //! Coz, It’s not a traditional REST API;
+  //! it’s a REST API tweaked to allow complex queries (like some GraphQL and MongoDB features),
+  //! which is why we use POST to fetch filtered or nested data.
+  //! how did i know that i have to do it this way.
+  //! simple! coz spaceX-API docs told me to
   const response = await axios.post(SPACEX_API_URL, {
     query: {}, // We're not filtering anything - we want all data
     options: {
@@ -233,7 +237,7 @@ async function abortLaunchById(launchId) {
   );
 
   // Tell us if we successfully cancelled the launch
-  // rememer we get back an acknowledgement-json-object once something is done
+  // remember we get back an acknowledgement-json-object once something is done in mdb
   // modifiedCount is the KV pair of that specific json object
   return aborted.modifiedCount === 1;
 }

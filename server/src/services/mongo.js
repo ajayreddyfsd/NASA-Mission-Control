@@ -2,7 +2,7 @@ const mongoose = require("mongoose"); // Import mongoose so we can connect to Mo
 require("dotenv").config(); // Load environment variables from .env file
 
 //$ the small mongo URL is to store data in mongodb db, locally in the laptop
-//$ the lengthy mongo url is to store data in mongodb db, but in cloud - the mongoDB Atlas, 
+//$ the lengthy mongo url is to store data in mongodb db, but in cloud - the mongoDB Atlas,
 //$ but the lengthy URL needs username and password to access the cluster
 //$ just toggle between which one you want to use
 

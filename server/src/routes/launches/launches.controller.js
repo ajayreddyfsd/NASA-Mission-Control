@@ -26,6 +26,7 @@ async function httpGetAllLaunches(req, res) {
 
 //! -------------------------
 //! Controller function to POST (add) a new launch
+//! lauch-data to add is in the request-object
 //! -------------------------
 async function httpAddNewLaunch(req, res) {
   const launch = req.body; // Get launch data sent by client through form
@@ -38,7 +39,8 @@ async function httpAddNewLaunch(req, res) {
     !launch.target
   ) {
     return res.status(400).json({
-      error: "Missing required launch property - must be 4: mission, rocket, lauchDate, target",
+      error:
+        "Missing required launch property - must be 4: mission, rocket, lauchDate, target",
     });
   }
 

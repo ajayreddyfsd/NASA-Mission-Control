@@ -30,17 +30,17 @@ const planetSchema = new mongoose.Schema({
 //   "keplerName": "Kepler-62 f"
 // }
 
-//! how do i know the collection name is "planets" ?
-//! coz, we used "Planet" for the model in below code
-//! which internally makes the collection name "planets"
+//! how do i know the the collection name inside the mongodb-DB is "planets" ?
+//! coz, we used "Planet" in below code
+//! which internally makes the actual collection name inside the mongodb-DB, "planets"
+//$ we need to write "Planet" here, mDB converts it internally to "planets" which is the actual-collection-name-inside-mongodb-DB
 
 // here we tell mongoose:
-// "Please take the blueprint (planetSchema) and connect it to the collection (folder/table) by the name "planets" in the database.
-// Planet = the model name we can use in code
-// 'planets' = the actual collection in MongoDB
-//$ we need to write "Planet" here, mDB converts it internally to "planets" which is the collection
-module.exports = mongoose.model("Planet", planetSchema);
+// "Please take the blueprint (planetsSchema) and connect it to the collection (folder/table) by the name 'planets' in the database.
+// Planet = the model name we use here
+// 'planets' = actual-collection-name-inside-mongodb-DB
+module.exports = mongoose.model("Planet", planetsSchema);
 
-//! why connect it to collection?
-//! coz usually, schmas in MongoDB are put for collections
-//! so it oversees all the docs going inside
+//! why connect the schema to the collection?
+//! coz usually, schemas in MongoDB are put for collections
+//! so it oversees all the docs going inside its collection

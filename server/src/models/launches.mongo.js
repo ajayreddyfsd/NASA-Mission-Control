@@ -55,8 +55,8 @@ const launchesSchema = new mongoose.Schema({
   },
 });
 
-//! so each doc in the db's "launches" collection, must follow this schema.
-//! below are some examples
+//! so each doc in the db's "launches" collection, must follow the above schema.
+//! below are some examples of the docs that go inside launches-collection
 // {
 //   "_id": "64ff3a1d92e01b27eabc1111",
 //   "flightNumber": 101,
@@ -80,17 +80,17 @@ const launchesSchema = new mongoose.Schema({
 //   "success": false
 // }
 
-//! how do i know the collection name is "launches" ?
-//! coz, we used "Launch" for the model in below code
-//! which internally makes the collection name "launches"
-//$ we need to write "Launch" here, mDB converts it internally to "launches" which is the collection
+//! how do i know the the collection name inside the mongodb-DB is "launches" ?
+//! coz, we used "Launch" in below code
+//! which internally makes the actual collection name inside the mongodb-DB, "launches"
+//$ we need to write "Launch" here, mDB converts it internally to "launches" which is the actual-collection-name-inside-mongodb-DB
 
 // here we tell mongoose:
 // "Please take the blueprint (launchesSchema) and connect it to the collection (folder/table) by the name 'launches' in the database.
-// Launch = the model name we can use in code
-// 'launches' = the actual collection in MongoDB
+// Launch = the model name we use here
+// 'launches' = actual-collection-name-inside-mongodb-DB
 module.exports = mongoose.model("Launch", launchesSchema);
 
-//! why connect it to collection?
+//! why connect the schema to the collection?
 //! coz usually, schemas in MongoDB are put for collections
-//! so it oversees all the docs going inside
+//! so it oversees all the docs going inside its collection

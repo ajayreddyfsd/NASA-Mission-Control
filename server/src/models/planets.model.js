@@ -11,7 +11,7 @@ const planetsCollection = require("./planets.mongo");
 
 //! this is a simple helper function that checks if a planet is habitable or not and returns true or false
 //! "habitable" = confirmed, gets right amount of starlight, and not too big
-//? the planet that is being passed to this function is an object which might looks like this
+//? the planet that is being passed to this function is an object which looks like this
 // {
 //   kepler_name: "Kepler-442 b",
 //   koi_disposition: "CONFIRMED",

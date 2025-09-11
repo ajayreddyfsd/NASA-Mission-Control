@@ -35,44 +35,44 @@
 
 8️⃣ **Result on the screen:**
 
-  - **[Header]** \<- always visible
-  - **[Upcoming]** \<- content changes based on route
-  - **[Footer]** \<- always visible
+- **[Header]** \<- always visible
+- **[Upcoming]** \<- content changes based on route
+- **[Footer]** \<- always visible
 
 ✅ **Key idea**: The **Route** only controls the middle content. The **Header** and **Footer** are part of the layout and never get replaced.
 
------
+---
 
 ## 🌐 Flow of functions and data (requests.js → custom hooks → components)
 
 ### 📝 Corrected Explanation
 
-  - `requests.js` contains the actual functions that interact with the API:
+- `requests.js` contains the actual functions that interact with the API:
 
-      - **GET requests** fetch data (e.g., `httpGetLaunches`, `httpGetPlanets`).
-      - **POST requests** update data (e.g., `httpSubmitLaunch`, `httpAbortLaunch`).
+  - **GET requests** fetch data (e.g., `httpGetLaunches`, `httpGetPlanets`).
+  - **POST requests** update data (e.g., `httpSubmitLaunch`, `httpAbortLaunch`).
 
-  - Then come the **custom hooks** (`useLaunches` and `usePlanets`), which **use the functions from `requests.js` internally**:
+- Then come the **custom hooks** (`useLaunches` and `usePlanets`), which **use the functions from `requests.js` internally**:
 
-      - `useLaunches`
-          - uses `httpGetLaunches` to fetch all launches.
-          - defines `submitLaunch` (internally uses `httpSubmitLaunch`).
-          - defines `abortLaunch` (internally uses `httpAbortLaunch`).
-      - `usePlanets`
-          - uses `httpGetPlanets` to fetch planet data.
+  - `useLaunches`
+    - uses `httpGetLaunches` to fetch all launches.
+    - defines `submitLaunch` (internally uses `httpSubmitLaunch`).
+    - defines `abortLaunch` (internally uses `httpAbortLaunch`).
+  - `usePlanets`
+    - uses `httpGetPlanets` to fetch planet data.
 
-  - Next, in the `AppLayout` component:
+- Next, in the `AppLayout` component:
 
-      - Both `useLaunches` and `usePlanets` are called.
-      - They return data (state) and functions, which `AppLayout` passes down to child components.
+  - Both `useLaunches` and `usePlanets` are called.
+  - They return data (state) and functions, which `AppLayout` passes down to child components.
 
-  - **Example flows:**
+- **Example flows:**
 
-      - `submitLaunch` is defined in `useLaunches` (which internally calls `httpSubmitLaunch`), passed to the `Launch` component, and attached to the `<form>`'s `onSubmit`.
-      - `abortLaunch` is defined in `useLaunches` (which internally calls `httpAbortLaunch`), passed to the `Upcoming` component, and used on the ❌ icon to cancel a launch.
-      - Planet data is loaded inside `usePlanets`, returned to `AppLayout`, and passed down to the `Launch` component (probably for a dropdown of planets).
+  - `submitLaunch` is defined in `useLaunches` (which internally calls `httpSubmitLaunch`), passed to the `Launch` component, and attached to the `<form>`'s `onSubmit`.
+  - `abortLaunch` is defined in `useLaunches` (which internally calls `httpAbortLaunch`), passed to the `Upcoming` component, and used on the ❌ icon to cancel a launch.
+  - Planet data is loaded inside `usePlanets`, returned to `AppLayout`, and passed down to the `Launch` component (probably for a dropdown of planets).
 
------
+---
 
 ### 📊 Diagram (flow of functions & data)
 
