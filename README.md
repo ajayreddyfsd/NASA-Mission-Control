@@ -6,7 +6,7 @@ A MERN full-stack project simulating NASA mission control operations with NASA a
 
 ![site snaps](./client/public/img/image.png)
 
-![architecture diagram](.client/public/img/image-1.png)
+![architecture diagram](./client/public/img/image-1.png)
 
 backend api url is "http://localhost:8000/v1"
 coz port is 8000 and mounted on /v1
