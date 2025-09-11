@@ -44,13 +44,10 @@
 ### The `models` Folder (The 'M' of MVC)
 
 - This folder is where all the **data- and database-related logic** lives.
-- We created schemas for the `planetsCollection` and `launchesCollection`.
+- We created mongodb-collection-schemas for the `planetsCollection` and `launchesCollection`.
 - In `planets.model.js`, we read a `.csv` file as a stream, filtered the planets, and stored them in the `planetsCollection`.
 - In `launches.model.js`, we used `axios` to get data from an external API and saved each launch document to the `launchesCollection`.
-- we are literally storing theses i the local mongodb database, since we havent named the database anything, it might name it as "test"
-- We also implemented two key functions here:
-  - `scheduleNewLaunch()`: adds a new launch document to the collection.
-  - `abortLaunchById()`: instead of deleting a launch document, this function adds new key-value pairs to it, marking it as aborted.
+- we are literally storing these in the local mongodb database, since we havent named the database anything, it might name it as "test"
 
 ---
 
@@ -58,8 +55,8 @@
 
 0. has 2 files, mongo.js and query,js
 1. Handles MongoDB connection and disconnection, including acknowledging successful connections and errors.
-2. Contains code to facilitate **pagination**.
-3. This is where you need to provide the MongoDB connection string.
+2. This is where you need to provide the MongoDB connection string.
+3. Contains code to facilitate **pagination**.
 
 ---
 
@@ -70,7 +67,7 @@
 - Each API endpoint is typically made up of two files: a **controller file** and a **router file**.
   - The **controller file** contains the core controller functions.
   - The **router file** maps specific routes to these controller functions.
-- Controllers and routers work together: the controller functions return data (like JSON, text, or HTML), and the router files organize these controller-functions by mapping them to specific routes. We usually have multiple controller-files and router-files.
+- Controllers and routers work together: the controller functions return data (like JSON, text, or HTML), and the router files organize these controller-functions by mapping them to specific routes. We usually have multiple controller-files and multiple router-files.
 - Finally, in `app.js`, we "mount" these routers on specific-paths again so the server knows which router to use for which request.
   -but here in the code, what we will do is, we will make a helper to do this, api.js, and then use the api.js in app.js
 
@@ -107,7 +104,7 @@
   - This means your API URL is `http://localhost:8000/v1`. You can test this URL in Postman to make sure everything is working.
 - **Step 2:** Use this exact URL as the API URL in your front-end code, specifically in `utils/requests.js`.
 - **Step 3:**
-  1. First, run the back end by running `node server.js`.
+  1. First, run the back end by running `server.js` file.
   2. Then, `cd` into the `client` folder and run `npm start` to run the front end.
 
 ---

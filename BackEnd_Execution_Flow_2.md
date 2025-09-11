@@ -1,0 +1,196 @@
+# Backend Execution Flow: From Frontend Actions to Database Operations
+
+### How requests or data travel from user clicks/frontend all the way to backend and get fulfilled
+
+---
+
+## 1. How the front end gets data: planets and launches (GET Request)
+
+- The `usePlanets` and `useLaunches` custom hooks are responsible for fetching data. (This data is then loaded into `AppLayout` and passed down to other components.)
+- How do they fetch data?
+  - By calling `httpGetLaunches()` and `httpGetPlanets()` inside `requests.js`, which hit the API endpoints with the GET method.
+  - So the request originates in the custom hook, travels to `requests.js`, then to the appropriate function, and finally hits the API endpoint.
+- **Backend journey:**
+  - The request reaches `server.js` → `app.js` → `api.js`
+  - Then it goes to the appropriate router file (based on `"/launches"` or `"/planets"`)
+  - Then to the proper route inside that router
+  - Finally, it lands in the controller function
+- **Controller role:**
+  - The controller receives the request
+  - Calls the model (which is in charge of data)
+  - Using the appropriate model function, fetches data from the database and fulfills the request
+
+**Diagram:**
+
+```text
+
+\[Frontend Component]
+AppLayout / Child Components
+│
+▼
+\[Custom Hook]
+usePlanets / useLaunches
+│ Calls
+▼
+\[Requests.js Functions]
+httpGetPlanets() / httpGetLaunches()
+│ Makes GET request
+▼
+\[API Endpoint]
+"/planets" / "/launches" (GET)
+│ Receives Request
+▼
+\[Server Layer]
+server.js → app.js → api.js
+│ Routes Request
+▼
+\[Router File]
+planetsRouter / launchesRouter
+│ Matches Route
+▼
+\[Controller Function]
+getPlanets() / getLaunches()
+│ Calls
+▼
+\[Model Function]
+fetchPlanetsFromDB() / fetchLaunchesFromDB()
+│ Reads from DB
+▼
+\[Database]
+Returns Data
+│ Response Sent
+▼
+\[Frontend]
+Custom Hook receives data → Components render
+
+```
+
+---
+
+## 2. How data collected through launches form is sent to backend (POST request)
+
+- User fills out a form → triggers `submitLaunch()` on `onsubmit`
+- `submitLaunch()` is inside `useLaunches` and internally uses `requests.js`'s `httpsubmitLaunch()`
+- The form data is now in `httpsubmitLaunch()`
+  - It puts the data inside the request object and sends a POST request to the API endpoint `"/launches"`
+- **Backend journey:**
+  - Data in `req.body` travels to `server.js` → `app.js` → `api.js`
+  - Goes to the appropriate router file (`launches`, since endpoint is `"/launches"` and method is POST)
+  - Then to the proper route inside the router
+  - Finally reaches the controller function
+- **Controller role:**
+  - Extracts data from `req.body`
+  - Calls the model (which is in charge of data)
+  - Calls the appropriate model function
+  - Stores the data in the database at the appropriate location inside the collection
+
+**Diagram:**
+
+```text
+
+\[Frontend Form]
+User fills launch data
+│ onSubmit
+▼
+\[Custom Hook]
+submitLaunch() (useLaunches)
+│ Calls
+▼
+\[Requests.js Function]
+httpsubmitLaunch()
+│ Constructs POST request with req.body
+▼
+\[API Endpoint]
+"/launches" (POST)
+│ Receives Request
+▼
+\[Server Layer]
+server.js → app.js → api.js
+│ Routes Request
+▼
+\[Router File]
+launchesRouter
+│ Matches POST Route
+▼
+\[Controller Function]
+addNewLaunch()
+│ Extracts data from req.body
+│ Calls model
+▼
+\[Model Function]
+addLaunchToDB()
+│ Writes to DB
+▼
+\[Database]
+Stores Launch
+│ Response Sent
+▼
+\[Frontend]
+Hook updates state → UI updates
+
+```
+
+---
+
+## 3. How abort (DELETE) request is sent to backend (DELETE Request)
+
+- User clicks `X` → triggers `abortLaunch()` by taking launch ID with it
+- `abortLaunch()` is inside `useLaunches` and internally calls `requests.js`'s `httpabortLaunch()`
+- The ID and the request travel to `httpabortLaunch()`
+  - it puts the id inside the request object and sends a DELETE request to the appropriate endpoint
+- **Backend journey:**
+  - Request and data travels to `server.js` → `app.js` → `api.js`
+  - Goes to the appropriate router file (`launches` in this case)
+  - Then to the proper route in that router
+  - Finally reaches the controller function
+- **Controller role:**
+  - Extracts ID from `req.body`
+  - Calls the model (which is in charge of data)
+  - Uses the appropriate model function to delete the launch from the database using its id.
+
+**Diagram:**
+
+```text
+
+\[Frontend Component]
+Click "X" on launch
+│ onClick
+▼
+\[Custom Hook]
+abortLaunch() (useLaunches)
+│ Calls
+▼
+\[Requests.js Function]
+httpabortLaunch()
+│ Constructs DELETE request with req.body.id
+▼
+\[API Endpoint]
+"/launches" (DELETE)
+│ Receives Request
+▼
+\[Server Layer]
+server.js → app.js → api.js
+│ Routes Request
+▼
+\[Router File]
+launchesRouter
+│ Matches DELETE Route
+▼
+\[Controller Function]
+deleteLaunch()
+│ Extracts id from req.body
+│ Calls model
+▼
+\[Model Function]
+removeLaunchFromDB()
+│ Deletes from DB
+▼
+\[Database]
+Launch Deleted
+│ Response Sent
+▼
+\[Frontend]
+Hook updates state → UI updates
+
+```
+
