@@ -47,6 +47,9 @@ Which directs you to a specific controller function, which uses a model function
 # As soon as server starts in server.js
 
 `mongoConnect()` in `mongo.js` will run and establish a connection with the DB.
+
 `loadPlanets()` in the planets-model file will run, sets up the "planets-collection", takes the data from the CSV and puts that into the "planets collection" inside the MongoDB DB.
+
 `loadLaunches()` in the launches-model file will run, sets up the "launches-collection", asks SpaceX for data, then takes that data and stores it inside the "launches collection" in the MongoDB DB.
+
 So basically, as soon as the server starts, the MongoDB connection is set up, MongoDB collections are setup and those collections are filled with data.
