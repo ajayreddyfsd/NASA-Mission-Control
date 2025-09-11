@@ -4,9 +4,9 @@ A MERN full-stack project simulating NASA mission control operations with NASA a
 
 **Tools & Technologies:** MongoDB, Express.js, React.js, Hooks, Node.js, MongoDB Atlas, Docker, AWS EC2, JavaScript.
 
-![site snaps](../NASA-Mission-Control/client/public/img/image.png)
+![site snaps](./client/public/img/image.png)
 
-![architecture diagram](../NASA-Mission-Control/client/public/img/image-1.png)
+![architecture diagram](.client/public/img/image-1.png)
 
 backend api url is "http://localhost:8000/v1"
 coz port is 8000 and mounted on /v1
